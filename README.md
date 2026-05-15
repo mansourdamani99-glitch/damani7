@@ -7,12 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Cairo', sans-serif;
             background: radial-gradient(ellipse at 30% 40%, #0a0f1e, #03050b);
@@ -21,7 +16,6 @@
             overflow-x: hidden;
             position: relative;
         }
-
         .stars {
             position: fixed;
             top: 0;
@@ -32,7 +26,6 @@
             z-index: 0;
             overflow: hidden;
         }
-
         .star {
             position: absolute;
             background-color: #fff;
@@ -41,13 +34,11 @@
             box-shadow: 0 0 8px rgba(255,255,200,0.8);
             animation: floatStar linear infinite;
         }
-
         @keyframes floatStar {
             0% { transform: translateY(0vh) translateX(0) rotate(0deg); opacity: 0.3; }
             50% { opacity: 1; }
             100% { transform: translateY(100vh) translateX(20px) rotate(360deg); opacity: 0.2; }
         }
-
         .container {
             position: relative;
             z-index: 2;
@@ -55,12 +46,9 @@
             margin: 0 auto;
             padding: 1rem 2rem;
         }
-
         .glow-text {
             text-shadow: 0 0 6px #b0f0ff, 0 0 12px #4effdc, 0 0 20px #00a6c4;
         }
-
-        h1, h2, h3, .logo { font-weight: 700; }
         h2 {
             font-size: 2rem;
             margin-bottom: 1rem;
@@ -69,7 +57,6 @@
             display: inline-block;
             text-shadow: 0 0 5px cyan;
         }
-
         nav {
             display: flex;
             justify-content: space-between;
@@ -81,9 +68,7 @@
             padding: 0.8rem 2rem;
             margin-bottom: 2rem;
             border: 1px solid rgba(0,255,255,0.2);
-            box-shadow: 0 0 20px rgba(0,180,220,0.2);
         }
-
         .logo i { font-size: 2rem; color: #0ff; margin-left: 0.5rem; }
         .nav-links { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
         .nav-links a {
@@ -97,7 +82,6 @@
         .nav-links a:hover, .nav-links a.active {
             background: rgba(0, 255, 255, 0.2);
             text-shadow: 0 0 6px cyan;
-            box-shadow: 0 0 10px rgba(0,255,255,0.4);
         }
         .user-badge {
             background: linear-gradient(135deg, #00b8b0, #0088aa);
@@ -116,7 +100,6 @@
             cursor: pointer;
             font-size: 0.8rem;
         }
-
         .auth-modal {
             position: fixed;
             top: 0;
@@ -160,7 +143,6 @@
         .auth-tab.active {
             background: rgba(0,255,255,0.2);
             color: #0ff;
-            text-shadow: 0 0 5px cyan;
         }
         .auth-input {
             width: 100%;
@@ -209,9 +191,6 @@
         .order-item { border-bottom: 1px solid cyan; padding: 1rem; margin-bottom: 0.5rem; }
         .status-badge { display: inline-block; padding: 0.2rem 1rem; border-radius: 30px; font-size: 0.75rem; font-weight: bold; }
         .status-pending { background: #f0b400; color: #1e1a00; }
-        .status-progress { background: #0a6eff; color: white; }
-        .status-completed { background: #00cc88; color: #002b1a; }
-        .status-cancelled { background: #aa2e4e; color: white; }
         .developers-section { display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; margin: 1.5rem 0; }
         .dev-card { display: flex; align-items: center; gap: 0.8rem; background: rgba(0, 20, 40, 0.6); padding: 0.6rem 1.8rem; border-radius: 3rem; border: 1px solid rgba(0,255,200,0.5); }
         .fading-star { animation: starFade 1.8s infinite; }
@@ -269,10 +248,10 @@
     <div id="services" class="page">
         <h2 class="glow-text">🚛 جميع الخدمات</h2>
         <div class="services-grid">
-            <div class="card"><i class="fas fa-tools"></i><h3>إصلاح ميكانيكي</h3><p>جميع أنواع الإصلاحات الميكانيكية</p></div>
-            <div class="card"><i class="fas fa-tint"></i><h3>توصيل الزيوت</h3><p>زيوت المحرك والجير</p></div>
-            <div class="card"><i class="fas fa-charging-station"></i><h3>توصيل الوقود</h3><p>بنزين - غازوال</p></div>
-            <div class="card"><i class="fas fa-truck-moving"></i><h3>خدمة السحب</h3><p>سحب إلى أقرب ورشة</p></div>
+            <div class="card"><i class="fas fa-tools"></i><h3>إصلاح ميكانيكي</h3></div>
+            <div class="card"><i class="fas fa-tint"></i><h3>توصيل الزيوت</h3></div>
+            <div class="card"><i class="fas fa-charging-station"></i><h3>توصيل الوقود</h3></div>
+            <div class="card"><i class="fas fa-truck-moving"></i><h3>خدمة السحب</h3></div>
         </div>
     </div>
     
@@ -288,9 +267,9 @@
                     <option value="ديبناج (سحب)">🚚 ديبناج / سحب</option>
                 </select>
                 <label>وصف المشكلة</label>
-                <textarea id="problemDesc" class="modern-textarea" placeholder="ماذا حدث؟"></textarea>
+                <textarea id="problemDesc" class="modern-textarea"></textarea>
                 <label>رقم هاتفك *</label>
-                <input type="tel" id="phoneReq" required class="modern-input" placeholder="0555XXXXXX">
+                <input type="tel" id="phoneReq" required class="modern-input">
                 <div style="display:flex; gap:0.5rem;">
                     <button type="button" id="getLocationBtn" class="btn" style="flex:1">📍 تحديد موقعي</button>
                     <input type="text" id="locationLink" placeholder="رابط الخريطة" class="modern-input" style="flex:2">
@@ -310,9 +289,9 @@
     <div id="features" class="page">
         <h2 class="glow-text">💎 مميزات التطبيق</h2>
         <div class="features-grid">
-            <div class="card"><i class="fas fa-bolt"></i><h3>هز الهاتف للتبليغ</h3><p>هز هاتفك لطلب المساعدة</p></div>
-            <div class="card"><i class="fas fa-moon"></i><h3>وضع ليلي</h3><p>تصميم مريح للعين</p></div>
-            <div class="card"><i class="fas fa-shield-alt"></i><h3>أمان وخصوصية</h3><p>بياناتك آمنة</p></div>
+            <div class="card"><i class="fas fa-bolt"></i><h3>هز الهاتف للتبليغ</h3></div>
+            <div class="card"><i class="fas fa-moon"></i><h3>وضع ليلي</h3></div>
+            <div class="card"><i class="fas fa-shield-alt"></i><h3>أمان وخصوصية</h3></div>
         </div>
     </div>
     
@@ -357,20 +336,20 @@
             <button class="auth-tab" data-auth-tab="signup">إنشاء حساب</button>
         </div>
         <div id="loginForm">
-            <input type="email" id="loginEmail" placeholder="البريد الإلكتروني" class="auth-input" autocomplete="email">
-            <input type="password" id="loginPassword" placeholder="كلمة السر" class="auth-input" autocomplete="current-password">
+            <input type="email" id="loginEmail" placeholder="البريد الإلكتروني" class="auth-input">
+            <input type="password" id="loginPassword" placeholder="كلمة السر" class="auth-input">
             <button id="doLoginBtn" class="auth-btn">دخول</button>
         </div>
         <div id="signupForm" style="display:none;">
-            <input type="email" id="signupEmail" placeholder="البريد الإلكتروني" class="auth-input" autocomplete="email">
-            <input type="password" id="signupPassword" placeholder="كلمة السر (4 أحرف على الأقل)" class="auth-input" autocomplete="new-password">
+            <input type="email" id="signupEmail" placeholder="البريد الإلكتروني" class="auth-input">
+            <input type="password" id="signupPassword" placeholder="كلمة السر (4 أحرف على الأقل)" class="auth-input">
             <button id="doSignupBtn" class="auth-btn">إنشاء حساب</button>
         </div>
     </div>
 </div>
 
 <script>
-    // ==================== رابط Google Sheets API ====================
+    // ==================== رابط Google Sheets ====================
     const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbz6L_Z8k9p0NDKcdC608fXbgrFEmWVIycNfsK3_iG5iaMu4-NtA9_vxdajZb5Bvw-lm_g/exec';
     
     function showLoading(show) {
@@ -378,11 +357,11 @@
         if(loader) loader.style.display = show ? 'flex' : 'none';
     }
     
-    // ==================== دوال التعامل مع Google Sheets ====================
+    // دوال التعامل مع Google Sheets
     async function addToSheet(sheetName, values) {
         try {
             showLoading(true);
-            const response = await fetch(GOOGLE_SHEET_URL, {
+            await fetch(GOOGLE_SHEET_URL, {
                 method: 'POST',
                 mode: 'no-cors',
                 headers: { 'Content-Type': 'application/json' },
@@ -410,7 +389,7 @@
             showLoading(false);
             return data;
         } catch (error) {
-            console.error('خطأ في البحث:', error);
+            console.error('خطأ:', error);
             showLoading(false);
             return { success: false, data: [] };
         }
@@ -418,15 +397,34 @@
     
     // ==================== نظام المستخدمين ====================
     let currentUser = null;
-    let userOrders = [];
+    
+    // دالة تشفير بسيطة
+    function encryptPassword(password) {
+        return btoa(unescape(encodeURIComponent(password)));
+    }
+    
+    function decryptPassword(encrypted) {
+        try {
+            return decodeURIComponent(escape(atob(encrypted)));
+        } catch(e) {
+            return atob(encrypted);
+        }
+    }
     
     // تسجيل الدخول
     async function loginWithSheet(email, password) {
+        const encryptedPass = encryptPassword(password);
+        console.log('كلمة السر المدخلة مشفرة:', encryptedPass);
+        
         const result = await searchInSheet('users', 1, email);
         if (result.success && result.data && result.data.length > 1) {
             for(let i = 1; i < result.data.length; i++) {
                 const userRow = result.data[i];
-                if(userRow[1] === email && userRow[2] === btoa(password)) {
+                const storedPassword = userRow[2];
+                console.log('كلمة السر المخزنة:', storedPassword);
+                console.log('هل تتطابق؟', storedPassword === encryptedPass);
+                
+                if(userRow[1] === email && storedPassword === encryptedPass) {
                     return { success: true, user: { id: userRow[0], email: userRow[1], rowIndex: i } };
                 }
             }
@@ -436,6 +434,7 @@
     
     // إنشاء حساب
     async function signupWithSheet(email, password) {
+        // التحقق من وجود البريد
         const checkResult = await searchInSheet('users', 1, email);
         if (checkResult.success && checkResult.data && checkResult.data.length > 1) {
             for(let i = 1; i < checkResult.data.length; i++) {
@@ -451,7 +450,12 @@
         
         const userId = 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6);
         const now = new Date().toISOString();
-        const values = [userId, email, btoa(password), now, now];
+        const encryptedPassword = encryptPassword(password);
+        
+        console.log('كلمة السر الأصلية:', password);
+        console.log('كلمة السر المشفرة:', encryptedPassword);
+        
+        const values = [userId, email, encryptedPassword, now, now];
         
         const addResult = await addToSheet('users', values);
         if (addResult.success) {
@@ -460,7 +464,7 @@
         return { success: false, message: 'حدث خطأ في إنشاء الحساب' };
     }
     
-    // حفظ الطلب محلياً (لأننا نستخدم localStorage للطلبات)
+    // باقي الدوال
     function addOrderForCurrentUser(service, phone, location, description) {
         if(!currentUser) { 
             alert('يرجى تسجيل الدخول أولاً'); 
@@ -479,7 +483,6 @@
         };
         orders.unshift(newOrder);
         localStorage.setItem('haqni_orders_' + currentUser.id, JSON.stringify(orders));
-        userOrders = orders;
         renderOrdersForCurrentUser();
         return newOrder;
     }
@@ -498,8 +501,8 @@
         }
         container.innerHTML = '';
         orders.slice().reverse().forEach(order => {
-            let statusClass = { pending:'status-pending', in_progress:'status-progress', completed:'status-completed', cancelled:'status-cancelled' }[order.status] || 'status-pending';
-            let statusText = { pending:'قيد الانتظار', in_progress:'قيد التنفيذ', completed:'مكتمل', cancelled:'ملغي' }[order.status] || 'قيد الانتظار';
+            let statusClass = { pending:'status-pending' }[order.status] || 'status-pending';
+            let statusText = { pending:'قيد الانتظار' }[order.status] || 'قيد الانتظار';
             const div = document.createElement('div'); div.className = 'order-item';
             div.innerHTML = `<strong><i class="fas fa-concierge-bell"></i> ${order.service}</strong><br>📞 ${order.phone} | 📍 ${order.location}<br>📝 ${order.description || 'لا يوجد'}<br><span class="status-badge ${statusClass}">${statusText}</span><small style="float:left;">${new Date(order.timestamp).toLocaleString('ar-DZ')}</small><div style="clear:both"></div><button class="btn" style="margin-top:6px; background:#aa2e4e;" onclick="window.cancelOrderGlobal('${order.id}')">إلغاء الطلب</button>`;
             container.appendChild(div);
