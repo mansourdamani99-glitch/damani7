@@ -349,8 +349,8 @@
 </div>
 
 <script>
-    // ==================== رابط Google Sheets ====================
-    const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbz6L_Z8k9p0NDKcdC608fXbgrFEmWVIycNfsK3_iG5iaMu4-NtA9_vxdajZb5Bvw-lm_g/exec';
+    // ==================== رابط Google Sheets الجديد ====================
+    const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbzgQfS-HGdFHRJYUZOSHrT94pzk78VuIdbLVpkEYJPsYbCoAWdb-EAlRiYNg_BsrAcwDg/exec';
     
     function showLoading(show) {
         const loader = document.getElementById('loadingIndicator');
@@ -361,7 +361,7 @@
     async function addToSheet(sheetName, values) {
         try {
             showLoading(true);
-            await fetch(GOOGLE_SHEET_URL, {
+            const response = await fetch(GOOGLE_SHEET_URL, {
                 method: 'POST',
                 mode: 'no-cors',
                 headers: { 'Content-Type': 'application/json' },
@@ -389,7 +389,7 @@
             showLoading(false);
             return data;
         } catch (error) {
-            console.error('خطأ:', error);
+            console.error('خطأ في البحث:', error);
             showLoading(false);
             return { success: false, data: [] };
         }
@@ -403,26 +403,15 @@
         return btoa(unescape(encodeURIComponent(password)));
     }
     
-    function decryptPassword(encrypted) {
-        try {
-            return decodeURIComponent(escape(atob(encrypted)));
-        } catch(e) {
-            return atob(encrypted);
-        }
-    }
-    
     // تسجيل الدخول
     async function loginWithSheet(email, password) {
         const encryptedPass = encryptPassword(password);
-        console.log('كلمة السر المدخلة مشفرة:', encryptedPass);
         
         const result = await searchInSheet('users', 1, email);
         if (result.success && result.data && result.data.length > 1) {
             for(let i = 1; i < result.data.length; i++) {
                 const userRow = result.data[i];
                 const storedPassword = userRow[2];
-                console.log('كلمة السر المخزنة:', storedPassword);
-                console.log('هل تتطابق؟', storedPassword === encryptedPass);
                 
                 if(userRow[1] === email && storedPassword === encryptedPass) {
                     return { success: true, user: { id: userRow[0], email: userRow[1], rowIndex: i } };
@@ -452,9 +441,6 @@
         const now = new Date().toISOString();
         const encryptedPassword = encryptPassword(password);
         
-        console.log('كلمة السر الأصلية:', password);
-        console.log('كلمة السر المشفرة:', encryptedPassword);
-        
         const values = [userId, email, encryptedPassword, now, now];
         
         const addResult = await addToSheet('users', values);
@@ -464,7 +450,7 @@
         return { success: false, message: 'حدث خطأ في إنشاء الحساب' };
     }
     
-    // باقي الدوال
+    // إدارة الطلبات
     function addOrderForCurrentUser(service, phone, location, description) {
         if(!currentUser) { 
             alert('يرجى تسجيل الدخول أولاً'); 
@@ -501,10 +487,8 @@
         }
         container.innerHTML = '';
         orders.slice().reverse().forEach(order => {
-            let statusClass = { pending:'status-pending' }[order.status] || 'status-pending';
-            let statusText = { pending:'قيد الانتظار' }[order.status] || 'قيد الانتظار';
             const div = document.createElement('div'); div.className = 'order-item';
-            div.innerHTML = `<strong><i class="fas fa-concierge-bell"></i> ${order.service}</strong><br>📞 ${order.phone} | 📍 ${order.location}<br>📝 ${order.description || 'لا يوجد'}<br><span class="status-badge ${statusClass}">${statusText}</span><small style="float:left;">${new Date(order.timestamp).toLocaleString('ar-DZ')}</small><div style="clear:both"></div><button class="btn" style="margin-top:6px; background:#aa2e4e;" onclick="window.cancelOrderGlobal('${order.id}')">إلغاء الطلب</button>`;
+            div.innerHTML = `<strong><i class="fas fa-concierge-bell"></i> ${order.service}</strong><br>📞 ${order.phone} | 📍 ${order.location}<br>📝 ${order.description || 'لا يوجد'}<br><span class="status-badge status-pending">قيد الانتظار</span><small style="float:left;">${new Date(order.timestamp).toLocaleString('ar-DZ')}</small><div style="clear:both"></div><button class="btn" style="margin-top:6px; background:#aa2e4e;" onclick="window.cancelOrderGlobal('${order.id}')">إلغاء الطلب</button>`;
             container.appendChild(div);
         });
     }
